@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Website tab name (title) -->
     <title>Algebra Help</title>
     <style>
         body {
@@ -12,7 +11,7 @@
             text-align: center;
         }
         input[type="text"] {
-            width: 300px;
+            width: 400px;
             padding: 10px;
             font-size: 16px;
         }
@@ -21,18 +20,42 @@
             color: #4CAF50;
             margin-bottom: 10px;
         }
+        iframe {
+            width: 80%;
+            height: 500px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
     </style>
+    <script>
+        function loadWebsite() {
+            const urlInput = document.getElementById("urlInput").value;
+            const iframe = document.getElementById("websiteFrame");
+
+            // Make sure the URL starts with http:// or https://
+            if (!urlInput.startsWith("http://") && !urlInput.startsWith("https://")) {
+                alert("Please enter a valid URL that starts with http:// or https://");
+                return;
+            }
+
+            // Load the entered URL into the iframe
+            iframe.src = urlInput;
+        }
+    </script>
 </head>
 <body>
 
-    <!-- Math symbol logo -->
+    <!-- Logo with a math symbol -->
     <div class="logo">∑</div>
 
     <!-- Page heading -->
     <h1>Algebra Help</h1>
-    
-    <!-- Text box with placeholder -->
-    <input type="text" placeholder="type here">
+
+    <!-- Text box to input the URL -->
+    <input type="text" id="urlInput" placeholder="type website URL here" onkeypress="if(event.key === 'Enter'){ loadWebsite(); }">
+
+    <!-- Iframe to display the entered URL -->
+    <iframe id="websiteFrame" src="" frameborder="0"></iframe>
 
 </body>
 </html>
